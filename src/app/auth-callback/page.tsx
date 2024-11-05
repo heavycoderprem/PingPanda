@@ -13,7 +13,7 @@ const Page = () => {
     const router = useRouter()
     const {data} = useQuery({
         queryFn: async () => {
-            const res = await client.auth.test.$get()
+            const res = await client.auth.getDatabaseSyncStatus.$get()
             return await res.json()
         },
         queryKey: ["get-database-sync-status"],

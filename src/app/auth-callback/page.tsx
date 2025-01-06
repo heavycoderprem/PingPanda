@@ -13,12 +13,12 @@ const Page = () => {
     const router = useRouter()
     const {data} = useQuery({
         queryFn: async () => {
-            const res = await client.auth.getDatabaseSyncStatus.$get()
+            const res = await client.getDatabaseSyncStatus.$get()
             return await res.json()
         },
         queryKey: ["get-database-sync-status"],
         refetchInterval: (query) => {
-            return query.state.data?.isSynced ? false : 100
+            return query.state.data?.isSynced ? false : 5000
         }
     })
 
